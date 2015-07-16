@@ -1,0 +1,17 @@
+{
+    "contents" : "temp = read.csv(\"data1985_area2.csv\",sep=\"\\t\")\nldata = read.table(\"dataLogisticNorm3D.txt\", header = TRUE)\n\n#1.3\ndlogisticnorm = function(u,mu,alpha,beta)\n{\n  d = length(u)\n  Sigma = matrix(-beta, nrow=d, ncol=d)\n  for(i in 1:d)\n    Sigma[i,i] = alpha\n  x = log(u)\n  ans = (2*pi)^(-d/2)*abs(det(Sigma))^(-1/2)*exp(-1/2*t(log(u/sum(u))-mu) %*% solve(Sigma) %*% (log(u/sum(u))-mu))\n  as.numeric(ans)\n}\n\ndlogisticnorm(c(0.6,0.1,.03),c(2,3,4),20,17)\n\n\ninitlog = c(1,1,1,1,1,1)\noptim(list(mu=c(1,1), alpha=2,beta=1), dlogisticnorm, control=list(fnscale=-1), method=\"L-BFGS-B\")\n\noptim(init, ll.thetaH, control=list(fnscale=-1), method = \"L-BFGS-B\", theta = optTheta,X=X,G=optG,index=index)$par\n\n\n\n\nlogisticnorm.mle = function(U)\n{\n  wrapper = function(param)\n  {\n    tempMu = param[3:length(param)]\n    d=length(tempMu)\n    \n    tempAlpha = abs(param[1])\n    tempBeta = abs(param[2])\n    \n    loglikeli=0\n    for(row in 1:nrow(U))\n      loglikeli = loglikeli + log(dlogisticnorm(as.numeric(U[row,]),tempMu, tempAlpha, tempBeta))\n    loglikeli\n  }\n  tempparam = c(1,1,rep(1,ncol(ldata)))\n  tempoptim = optim(tempparam, wrapper, control=list(fnscale=-1))$par\n  \n  mu.hat = tempoptim[3:length(tempoptim)]\n  alpha.hat = tempoptim[1]\n  beta.hat = tempoptim[2]\n  list(\"mu.hat\" = mu.hat, \"alpha.hat\" = alpha.hat, \"beta.hat\" = beta.hat)\n}\n\nlogisticnorm.mle(ldata[1,])\nlogisticnorm.mle(ldata)\n\n\n\n\n",
+    "created" : 1410908112811.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "469584211",
+    "id" : "E18233A6",
+    "lastKnownWriteTime" : 1411529036,
+    "path" : "~/Documents/School/Harvard/Third Semester/STAT 221/Assignments/Ass1/Ass1 R Code/221Ass1-Q1.R",
+    "project_path" : "221Ass1-Q1.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

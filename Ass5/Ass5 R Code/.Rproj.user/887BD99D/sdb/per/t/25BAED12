@@ -1,0 +1,17 @@
+{
+    "contents" : "library(MASS) #ginv\ndat = read.csv(\"1router_allcount.dat\")\nattach(dat)\nsource(\"tam_gregory_functions.R\")\n\nx.indices = 1:16\ny.indices = 17:24\n# nme[which(nme %in% nme[x.indices])]\nx = matrix(value[which(nme %in% nme[x.indices])],nrow=16)\n# nme[which(nme %in% nme[y.indices])]\ny = matrix(value[which(nme %in% nme[y.indices])],nrow=8)\n\n#set A matrix\nI=16\nJ=8\nc=2\nT=length(nme)/25\nA = matrix(,nrow=J-1,ncol=I)\nrownames(A) = c(\"f\",\"s\",\"l\",\"c\",\"f\",\"s\",\"l\")\nA[1,]=c(rep(1,4),rep(0,12))\nA[2,]=c(rep(0,4),rep(1,4),rep(0,8))\nA[3,]=c(rep(0,8),rep(1,4),rep(0,4))\nA[4,]=c(rep(0,12),rep(1,4))\nA[5,]=rep(c(1,0,0,0),4)\nA[6,]=rep(c(0,1,0,0),4)\nA[7,]=rep(c(0,0,1,0),4)\n\n\nf_em = locally_iid_EM(y,c,A,lambda.init=1e4)\n\n\n\nlibrary(numDeriv) #hessian function\nlibrary(mvtnorm)\nlibrary(psych) #trace function\nlibrary(MASS) #ginnv\n\n\nx.indices = 1:16\ny.indices = 17:24\n# nme[which(nme %in% nme[x.indices])]\nx = matrix(value[which(nme %in% nme[x.indices])],nrow=16)\n# nme[which(nme %in% nme[y.indices])]\ny = matrix(value[which(nme %in% nme[y.indices])],nrow=8)\n\n\n\n\nI=16\nJ=8\nc=2\nT=length(nme)/25\nA = matrix(,nrow=J-1,ncol=I)\nrownames(A) = c(\"f\",\"s\",\"l\",\"c\",\"f\",\"s\",\"l\")\nA[1,]=c(rep(1,4),rep(0,12))\nA[2,]=c(rep(0,4),rep(1,4),rep(0,8))\nA[3,]=c(rep(0,8),rep(1,4),rep(0,4))\nA[4,]=c(rep(0,12),rep(1,4))\nA[5,]=rep(c(1,0,0,0),4)\nA[6,]=rep(c(0,1,0,0),4)\nA[7,]=rep(c(0,0,1,0),4)\n\n\nf_em = smoothed_EM(y,c,A,V.init=100,eta.init=11)\n\n\n\n\n\n\n\n\n\n",
+    "created" : 1416531984965.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "328221137",
+    "id" : "25BAED12",
+    "lastKnownWriteTime" : 1416532593,
+    "path" : "~/Documents/School/Harvard/Third Semester/STAT 221/Assignments/Ass5/Ass5 R Code/tam_gregory_1router.R",
+    "project_path" : "tam_gregory_1router.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

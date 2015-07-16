@@ -1,0 +1,17 @@
+{
+    "contents" : "data = read.csv(\"a9a\",sep=\" \",header=FALSE)\ndata = data[,-16] #removes last column which is glitchy (all NA)\n\nx = matrix(,nrow=32561,ncol=14)\n\nfor(cols in 1:14)\n{\n  #Extracts the number x from the string \"x:1\"\n  x[,cols] = sapply(as.character(data[,cols+1]), function(i) as.numeric(strsplit(i,\":\")[[1]][1]))\n}\ny = data[,1]\n\n#Split x and y into training and test sets\ntrain.indices = sample(1:nrow(x),0.8*nrow(x))\nx.train = x[train.indices,]\nx.test = x[-train.indices,]\ny.train = y[train.indices]\ny.test = y[-train.indices]\n\n#Creates design matrix from the matrix of indices x.train\nx.mat.train = matrix(0,nrow=nrow(x.train), ncol=123)\nfor(i in 1:nrow(x.mat.train))\n  x.mat.train[i,x.train[i,]]=1\nx.mat.train = cbind(1,x.mat.train)\n\nx.mat.test = matrix(0,nrow=nrow(x.test), ncol=123)\nfor(i in 1:nrow(x.mat.test))\n  x.mat.test[i,x.test[i,]]=1\nx.mat.test = cbind(1,x.mat.test)\n\n\n#Set Parameters\nN = nrow(x)\nn = 10\n\ntime = 1:50\na = 0.015\nb = 1\ngamma = 0.55\n\nepsilon = a*(b+time)^(-gamma)\nepsilon[1]\nepsilon[length(epsilon)]\n\nexpit = function(x){1/(1+exp(-x))}\nbeta.mat = matrix(0,nrow=124,ncol=1)\n\nfor(t in 1:50)\n{\n  for(batch.rep in seq(1,124,10))\n  {\n    n=10\n    if(batch.rep==121)\n      n=4\n    beta.old = beta.mat[,ncol(beta.mat)]\n    logprior.grad = sign(beta.old)\n    ll.grad = function(index)\n    {\n      expit(y.train[index] * sum(beta.old * x.mat.train[index,])) * y.train[index] * x.mat.train[index,]\n    }\n\n    eta = rnorm(124,mean=0,sd=sqrt(epsilon[t]))\n    ll.grad.vec = sapply(1:n,ll.grad)\n\n    #proposed update\n    beta.new = beta.old + epsilon[t]/2*(logprior.grad + N/n*apply(ll.grad.vec,1,sum)) + eta\n    beta.mat = cbind(beta.mat,beta.new)\n    beta.old = beta.new\n  }\n}\n\nlength(y.train)\ndim(x.mat.train)\ndim(beta.mat)\n\n#indices when entire sweep of dataset has finished\nbeta.index = seq(14,13*50+1,13)\nbeta.final = beta.mat[,beta.index]\n\n#Average log joint probability per data item vs number of sweeps\navg.log.prob = c()\nfor(i in 1:ncol(beta.final))\n{\n  temp = mean(expit(y.train * x.mat.train %*% beta.final[,i]))\n  avg.log.prob = c(avg.log.prob, log(temp))\n}\n\npdf(\"avglogprob.pdf\",weight=6,height=6)\ndev.off()\n\n\n#Accuracy on test set vs number of swepes\nlength(y.test)\ndim(x.mat.test)\ndim(beta.mat)\n\n#vector of accuracies\nacc = c()\nfor(i in 1:ncol(beta.mat))\n{\n  probs = expit(y.test * x.mat.test %*% beta.mat[,i])\n  temp = length(which(probs>0.5))/length(probs)\n  acc = c(acc,temp)\n}\npdf(\"fig3.pdf\",width=8,height=4)\npar(mfrow=c(1,2))\nplot(avg.log.prob,type='l',main=\"Average Log Probability\")\nplot((1:28-1)/13, acc[1:28],type='l',xlab=\"Number of Sweeps\",ylab=\"Accuracy\",main=\"Accuracy vs Number of Sweeps\")\ndev.off()\n\n\n\n\n\n\n\n\n",
+    "created" : 1418347125910.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3716455114",
+    "id" : "4EDFA07",
+    "lastKnownWriteTime" : 1418848346,
+    "path" : "~/Documents/School/Harvard/Third Semester/STAT 221/Assignments/Final Project/Final Project/Implementation2.R",
+    "project_path" : "Implementation2.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

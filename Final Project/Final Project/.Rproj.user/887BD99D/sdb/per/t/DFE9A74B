@@ -1,0 +1,17 @@
+{
+    "contents" : "impala = read.table(\"impala.txt\", header = TRUE)\nimpala = impala[,1]\n\nwaterbuck = read.table(\"waterbuck.txt\", header = TRUE)\nwaterbuck = waterbuck[,1]\n\nlog.lik <- function(Y, N, theta)\n{\n  # Log-likelihood of the data\n  sum(dbinom(Y, N, theta, log=T))\n}\n\nlog.prior <- function(N, theta)\n{\n  #1/N times the indicator that theta is in [0,1]\n  log(1/N * ifelse(theta>=0 & theta<=1,1,0))\n}\n\ntime = 1:1000\n\n#impala\na = 0.0005\nb = 3\ngamma = 0.7\n\n#waterbuck\na = 0.002\nb = 5\ngamma = 0.7\n\nepsilon = a*(b+time)^(-gamma)\nepsilon[1]\nepsilon[length(epsilon)]\n\ny = impala\ny = waterbuck\nS = sum(y)\ntheta.samp = 0.9\nN.samp = max(y)\n\nfor(t in 1:100)\n{\n  theta.old = tail(theta.samp,1)\n  N.old = tail(N.samp,1)\n\n  #ensures N is large enough\n  repeat\n  {\n    #geometric over entire thing\n    N.new = rgeom(1,1/(1+N.old))\n    #only keep sample if N is in the boundaries\n    if(N.new >= max(y) & N.new <= 300)\n      break\n  }\n\n  logprior.grad = -log(N.old)\n  ll.grad = function(index)\n  {\n    y[index]/theta.old - (N.old - y[index])/(1-theta.old)\n  }\n\n  ll.grad.vec = sapply(1:5,ll.grad)\n  eta = rnorm(1,mean=0,sd=sqrt(epsilon[t]))\n\n  #proposed update\n  theta.new = theta.old + epsilon[t]/2*(logprior.grad + sum(ll.grad.vec)) + eta\n  #if theta.new is outside boundaries, project back to [0,1]\n  #theta.new cannot be 0 or 1 otherwise ll.grad becomes infinite\n  #so we add a bit of noise\n  if(theta.new>1)\n    theta.new=1-1e-6\n  if(theta.new<0)\n    theta.new=1e-6\n\n  #Add theta to samples\n  theta.samp = c(theta.samp,theta.new)\n  theta.old = theta.new\n  #Add N to samples\n  N.samp = c(N.samp,N.new)\n  N.old = N.new\n}\n\nN.samp\ntheta.samp\n\n\n\npdf(\"waterbuck-scatterplot.pdf\",width=6,height=6)\nplot(N.samp,theta.samp,type=\"b\",ylim=range(0,1))\ndev.off()\n\n\npdf(\"waterbuck-diagnostics.pdf\",width=6,height=6)\npar(mfrow=c(2,2))\nacf(N.samp, main=\"ACF for N\")\nacf(theta.samp, main=\"ACF for theta\")\nplot(N.samp,type='l',main=\"Traceplot for N\")\nplot(theta.samp,type='l',main=\"Traceplot for theta\")\ndev.off()\n\n\npdf(\"impala-scatterplot.pdf\",width=6,height=6)\nplot(N.samp,theta.samp,type=\"b\",ylim=range(0,1))\ndev.off()\n\n\npdf(\"impala-diagnostics.pdf\",width=6,height=6)\npar(mfrow=c(2,2))\nacf(N.samp, main=\"ACF for N\")\nacf(theta.samp, main=\"ACF for theta\")\nplot(N.samp,type='l',main=\"Traceplot for N\")\nplot(theta.samp,type='l',main=\"Traceplot for theta\")\ndev.off()\n\n\n",
+    "created" : 1418850883245.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1297910941",
+    "id" : "DFE9A74B",
+    "lastKnownWriteTime" : 1418848605,
+    "path" : "~/Documents/School/Harvard/Third Semester/STAT 221/Assignments/Final Project/Final Project/Implementation3.R",
+    "project_path" : "Implementation3.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

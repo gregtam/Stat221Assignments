@@ -1,0 +1,73 @@
+dat = read.csv("1router_allcount.dat")
+attach(dat)
+
+x.names = c("src fddi","src switch","src local","src corp","dst fddi","dst switch","dst local","dst corp")
+
+par(mfrow=c(1,2))
+means=c()
+vars = c()
+for(i in 1:8)
+{
+  means[i]=mean(value[which(nme[3301:3600]==x.names[i])+3300])
+  vars[i]=var(value[which(nme[3301:3600]==x.names[i])+3300])
+}
+plot(log10(means),log10(vars),pch=c("1","2","3","4","5","6","7","8"),ylim=range(7,11),main="11:30")
+fit=lm(log10(vars)~log10(means))
+x = seq(4,6,0.1)
+y = fit$coef[1] + fit$coef[2]*x
+lines(x,y)
+
+means=c()
+vars = c()
+for(i in 1:8)
+{
+  means[i]=mean(value[which(nme[4501:4800]==x.names[i])+4500])
+  vars[i]=var(value[which(nme[4501:4800]==x.names[i])+4500])
+}
+plot(log10(means),log10(vars),pch=c("1","2","3","4","5","6","7","8"),ylim=range(7,11),main="15:30")
+fit=lm(log10(vars)~log10(means))
+x = seq(4,6,0.1)
+y = fit$coef[1] + fit$coef[2]*x
+lines(x,y)
+
+
+dat2 = read.csv("2router_linkcount.dat")
+attach(dat2)
+
+x.names = c("dst router5", "dst r4-local", "dst switch", "dst r4-others","dst gw1", "dst gw2", "dst gw3", "dst gw-others", 
+              "ori router5", "ori r4-local", "ori switch", "ori r4-others","ori gw1", "ori gw2", "ori gw3", "ori gw-others")
+
+par(mfrow=c(1,2))
+means=c()
+vars = c()
+for(i in 1:8)
+{
+  means[i]=mean(value[which(nme[2113:2304]==x.names[i])+2112])
+  vars[i]=var(value[which(nme[2113:2304]==x.names[i])+2112])
+}
+plot(log10(means),log10(vars),pch=c("1","2","3","4","5","6","7","8",
+                                    "9","10","11","12","13","14","15","16"),main="11:30")
+fit=lm(log10(vars)~log10(means))
+x = seq(2,6,0.1)
+y = fit$coef[1] + fit$coef[2]*x
+lines(x,y)
+
+means=c()
+vars = c()
+for(i in 1:8)
+{
+  means[i]=mean(value[which(nme[2881:3088]==x.names[i])+2880])
+  vars[i]=var(value[which(nme[2881:3088]==x.names[i])+2800])
+}
+plot(log10(means),log10(vars),pch=c("1","2","3","4","5","6","7","8",
+                                    "9","10","11","12","13","14","15","16"),main="15:30")
+fit=lm(log10(vars)~log10(means))
+x = seq(2,6,0.1)
+y = fit$coef[1] + fit$coef[2]*x
+lines(x,y)
+
+
+
+
+
+

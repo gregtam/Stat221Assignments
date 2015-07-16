@@ -1,0 +1,57 @@
+\documentclass[12pt]{article}
+
+%%%%%%%%%%%%%%%%%%%
+% Packages/Macros %
+%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}     % Standard packages
+\usepackage{bbold}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{hyperref}
+
+%%%%%%%%%%%
+% Margins %
+%%%%%%%%%%%
+\addtolength{\textwidth}{1.0in}
+\addtolength{\textheight}{1.00in}
+\addtolength{\evensidemargin}{-0.75in}
+\addtolength{\oddsidemargin}{-0.75in}
+\addtolength{\topmargin}{-.50in}
+\setlength\parindent{0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Theorem/Proof Environments %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{theorem}{Theorem}
+%%%%%%%%%%%%
+% Document %
+%%%%%%%%%%%%
+\begin{document}
+Stat 221 final project description, Fall 2014 \\
+Edo Airoldi, Panos Toulis
+\section*{Final project on sampling with stochastic gradient methods}
+Welling and Teh (2014) developed a method (SGLD) for fast posterior sampling on large Bayesian models using stochastic gradients. Their method is a case of Langevin dynamics which is also a case of Hamiltonian Monte Carlo (HMC). You will replicate the experiments in that paper and investigate the performance of this new sampling algorithm.
+
+\section{Literature review (5pts)}
+Read the papers in the bib folder, with the main focus on the Welling and Teh paper.
+Write a short technical account of their method, and why their method works. You may want to talk about HMC, and Langevin dynamics as well.
+We also included a recent paper that has a concrete proof using stochastic calculus which 
+could be very helpful for this task.
+
+\section{Tasks (15pts)}
+\begin{enumerate}
+\item (5pts) \textbf{Implementation \#1}. Implement the method proposed by the authors 
+	and demonstrate using the experiments presented in Section 5.1 of their paper.
+	Replicate Figures 1 and 2. 
+\item (5pts)  \textbf{Implementation \#2}. 
+	Implement the logistic regression example of 5.2 and replicate Figure 3.
+\item (5pts) \textbf{Implementation \#3}. Use the SGLD method to sample from the banana-shaped 
+posterior in the Raftery model we saw in class. Replicate the key figures and 
+	present clear arguments on whether the method works or not, and why.
+	Compare with your own implementation of the MCMC sampler for that model.
+\end{enumerate}
+
+\section{Conclusion (5pts)}
+Write a conclusion of your research giving a summary of theoretical and empirical results,
+and give concrete recommendations for the practicioners who wish to use the  SGLD method for 
+posterior sampling of a Bayesian model.
+\end{document}

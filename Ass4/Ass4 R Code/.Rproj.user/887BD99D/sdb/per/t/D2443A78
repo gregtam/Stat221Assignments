@@ -1,0 +1,17 @@
+{
+    "contents" : "#1.5\nimpala = read.table(\"impala.txt\", header = TRUE)\nimpala = impala[,1]\n\nwaterbuck = read.table(\"waterbuck.txt\", header = TRUE)\nwaterbuck = waterbuck[,1]\n\nunscaled.marg.post.N = function(N,y)\n{\n  S = sum(y)\n  n = length(y)\n  1/choose(n*N,S) * 1/(n*N+1) * prod(choose(N,y)/N)\n}\n\ny = waterbuck\nN.seq = seq(max(y),max(y)+200,1)\nmarg.post.seq = sapply(N.seq, function(temp) unscaled.marg.post.N(temp,y))\nwaterbuck.constant = 1/sum(marg.post.seq)\n\ny = impala\nN.seq = seq(max(y),max(y)+1000,1)\nmarg.post.seq = sapply(N.seq, function(temp) unscaled.marg.post.N(temp,y))\nimpala.constant = 1/sum(marg.post.seq)\n\n#1.6\nmarg.post.N.waterbuck = function(N,y)\n{\n  S = sum(y)\n  n = length(y)\n  val = 1/choose(n*N,S) * 1/(n*N+1) * prod(choose(N,y)/N)*waterbuck.constant\n  if(is.na(val))\n    return(0)\n  val\n}\nmarg.post.N.impala = function(N,y)\n{\n  S = sum(y)\n  n = length(y)\n  val = 1/choose(n*N,S) * 1/(n*N+1) * prod(choose(N,y)/N)*impala.constant\n  if(is.na(val))\n    return(0)\n  val\n}\n\ny = waterbuck\np.waterbuck = sum(sapply(101:7000,function(i) marg.post.N.waterbuck(i,y)))\np.waterbuck\n\ny = impala\np.impala = sum(sapply(101:7000, function(i) marg.post.N.impala(i,y)))\np.impala\n\n\n\n\n\n\n\n\n\n\n",
+    "created" : 1414973218711.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2293798014",
+    "id" : "D2443A78",
+    "lastKnownWriteTime" : 1415151582,
+    "path" : "~/Documents/School/Harvard/Third Semester/STAT 221/Assignments/Ass4/Ass4 R Code/tam_gregory_marginal.R",
+    "project_path" : "tam_gregory_marginal.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

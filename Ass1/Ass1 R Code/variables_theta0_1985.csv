@@ -1,0 +1,225 @@
+1985,,,,,
+,,,,"initial_probs",
+"var name in the file","Var description","CODES GoM","CATEGORIES","high","low"
+,,,,,
+"id","Plot ID",,,,
+,,,,,
+"gleba","Gleba",0,1,0.70,0.30
+,,1,2,0.30,0.70
+,,,,,
+"occup","Occupation of HH 12 months before Machadinho (V354) ",0,"Rural",0.44,0.10
+,,1,"Urban",0.00,0.55
+,,2,"Not active",0.11,0.24
+,,3,"extractive",0.44,0.10
+,,4,"NI",0.01,0.01
+,,,,,
+"people","Number of people in the household (V100)",0,"1a4",0.20,0.50
+,,1,"5a9",0.30,0.30
+,,2,"10+",0.50,0.20
+,,,,,
+"Hhedu","HH education (V121)",0,"0-1",0.70,0.20
+,,1,"2a4",0.29,0.40
+,,2,"5 +",0.00,0.39
+,,3,"NI",0.01,0.01
+,,,,,
+"Hhwedu","HH's wife education (V122)",0,"0-1",0.70,0.20
+,,1,"2a4",0.29,0.40
+,,2,"5 +",0.00,0.39
+,,3,"No wife",0.00,0.00
+,,4,"NI",0.01,0.01
+,,,,,
+"shouldDDT","Sucam should spray DDT (V210)",0,"No",0.85,0.04
+,,1,"Yes",0.14,0.95
+,,2,"NI",0.01,0.01
+,,,,,
+"knowledge","Knowledge of vector (V220)",0,"No",0.70,0.29
+,,1,"Yes",0.29,0.70
+,,2,"NI",0.01,0.01
+,,,,,
+"dirtwater","Get malaria drinking dirty water (V240)",0,"No",0.70,0.29
+,,1,"Yes",0.29,0.70
+,,2,"NI",0.01,0.01
+,,,,,
+"bednet","Use bednet (V251)",0,"No",0.70,0.29
+,,1,"Yes",0.29,0.70
+,,2,"NI",0.01,0.01
+,,,,,
+"repellent","Use repellent (V252)",0,"No",0.70,0.29
+,,1,"Yes",0.29,0.70
+,,2,"NI",0.01,0.01
+,,,,,
+"insecticide","Spray insecticide (V253)",0,"No",0.70,0.29
+,,1,"Yes",0.29,0.70
+,,2,"NI",0.01,0.01
+,,,,,
+"arrivRO","Year of arrival in RO (V332A)",0,"Before 85",0.70,0.29
+,,1,"After 85",0.29,0.70
+,,2,"NI",0.01,0.01
+,,,,,
+"region","Region of residence in the 12 months before Machadinho (V341)",0,"North",0.15,0.20
+,,1,"South",0.25,0.19
+,,2,"Southeast",0.25,0.20
+,,3,"Northeast",0.19,0.20
+,,4,"Center-West",0.15,0.20
+,,5,"NI",0.01,0.01
+,,,,,
+"goods","Number of goods (V441-455)",0,"1a4",0.70,0.30
+,,1,"5+",0.30,0.70
+,,,,,
+"chainsaw","Has a chainsaw (V451)",0,"No",0.70,0.29
+,,1,"Yes",0.29,0.70
+,,2,"NI",0.01,0.01
+,,,,,
+"planter","Has a planter (V452) ",0,"No",0.70,0.29
+,,1,"Yes",0.29,0.70
+,,2,"NI",0.01,0.01
+,,,,,
+"chickenpork","Has chicken/pork (V461 and V462)",0,"No",0.70,0.29
+,,1,"Yes",0.29,0.70
+,,2,"NI",0.01,0.01
+,,,,,
+"build","Plan to build another house this year (V622)",0,"No",0.70,0.29
+,,1,"Yes",0.29,0.70
+,,2,"NI",0.01,0.01
+,,,,,
+"rooms","Number of rooms in the house (V630)",0,"1a4",0.70,0.29
+,,1,"3+",0.29,0.70
+,,2,"NI",0.01,0.01
+,,,,,
+"wall","Quality of walls (V631)",0,"Poor",0.70,0.29
+,,1,"Good",0.29,0.70
+,,2,"NI",0.01,0.01
+,,,,,
+"roof","Quality of roof (V632)",0,"Poor",0.70,0.29
+,,1,"Good",0.29,0.70
+,,2,"NI",0.01,0.01
+,,,,,
+"sealing","Quality of sealing (V633)",0,"Poor",0.70,0.29
+,,1,"Good",0.29,0.70
+,,2,"NI",0.01,0.01
+,,,,,
+"DDT","SUCAM sprayed DDT (V640)",0,"No",0.70,0.29
+,,1,"Yes",0.29,0.70
+,,2,"NI",0.01,0.01
+,,,,,
+"getwater","Water source (V660)",0,"Poor",0.70,0.29
+,,1,"Good",0.29,0.70
+,,2,"NI",0.01,0.01
+,,,,,
+"bath","Bathing place (V661)",0,"Poor",0.70,0.29
+,,1,"Good",0.29,0.70
+,,2,"NI",0.01,0.01
+,,,,,
+"dforest","Distance to the forest - meters (V672)",0,"0-100",0.80,0.19
+,,1,"100+",0.19,0.80
+,,2,"NI",0.01,0.01
+,,,,,
+"driver","Distance to the river (V673)",0,"0-600",0.80,0.19
+,,1,"600+",0.19,0.80
+,,2,"NI",0.01,0.01
+,,,,,
+"dculvert","Distance to culverts with stagnant water (V674)",0,"0-600",0.80,0.19
+,,1,"600+",0.19,0.80
+,,2,"NI",0.01,0.01
+,,,,,
+"dother","Distance to other kind of stagnant water (V675)",0,"0-600",0.80,0.19
+,,1,"600+",0.19,0.80
+,,2,"NI",0.01,0.01
+,,,,,
+"tea","Use any tea or plant to treat malaria (V254)",0,"No",0.60,0.39
+,,1,"Yes",0.39,0.60
+,,2,"NI",0.01,0.01
+,,,,,
+"cleared","Cleared area (V411)",0,"0-7",0.40,0.10
+,,1,"8a22",0.45,0.19
+,,2,">22",0.14,0.70
+,,3,"NI",0.01,0.01
+,,,,,
+"coffee","Coffee (V423)",0,"No",0.60,0.39
+,,1,"Yes",0.39,0.60
+,,2,"NI",0.01,0.01
+,,,,,
+"cocoa","Cocoa (V425)",0,"No",0.60,0.39
+,,1,"Yes",0.39,0.60
+,,2,"NI",0.01,0.01
+,,,,,
+"rubber","Rubber tree (V427)",0,"No",0.60,0.39
+,,1,"Yes",0.39,0.60
+,,2,"NI",0.01,0.01
+,,,,,
+"cassava","Cassava (V413)",0,"No",0.70,0.29
+,,1,"Yes",0.29,0.70
+,,2,"NI",0.01,0.01
+,,,,,
+"lavoubranca","Lavoura branca (V417, V419, V421, V415)",0,"No",0.60,0.39
+,,1,"Yes",0.39,0.60
+,,2,"NI",0.01,0.01
+,,,,,
+"arrival","Year of arrival in Machadinho (QA4A)",0,"Before 1984",0.70,0.29
+,,1,"1984 or 1985",0.29,0.70
+,,2,"NI",0.01,0.01
+,,,,,
+"Dist.neighb","Distance to nearest neighbor (using nearest neighbor",0,"< 500 meters",0.05,0.60
+,"Function in ArcView)",1,">= 500 m and < 1000 m",0.15,0.20
+,,2,">= 1000 m and < 2000 m",0.20,0.15
+,,3,">= 2000 m",0.60,0.05
+,,,,,
+"900mforest","Within a zone of 900 meters from a protected forest ",0,"No",0.10,0.90
+,"reserve (Create this variable using the map)",1,"Yes",0.90,0.10
+,,,,,
+"1000mRiver","Within a zone of 1000 meters from Machadinho ",0,"No",0.10,0.90
+,"River (Create this variable)",1,"Yes",0.90,0.10
+,,,,,
+"Unico dono","1st owner of the plot (Create variable based on map)",0,"No",0.70,0.30
+,,1,"Yes",0.30,0.70
+,,,,,
+"dist-hosp","Distance to the health center in the urban area (Km)",0,"< 10",0.06,0.50
+,,1,">= 10 and < 20",0.09,0.25
+,,2,">= 20 and < 30",0.10,0.10
+,,3,">= 30 and < 40",0.25,0.09
+,,4,">= 40",0.50,0.06
+,,,,,
+"v101","v101 - part of family did not come",0,"No",0.10,0.89
+,,1,"Yes",0.89,0.10
+,,2,"NI",0.01,0.01
+,,,,,
+"v104","v104 - where are those that did not come",0,"NI",0.01,0.01
+,,1,"Ariquemes",0.40,0.10
+,,2,"Jaru",0.40,0.10
+,,3,"Ouro Preto",0.05,0.59
+,,4,"Other RO",0.08,0.10
+,,5,"Other UF",0.06,0.10
+,,,,,
+"v510","v510 - how many times went urban area",0,"None",0.03,0.50
+,,1,"live in urban area",0.06,0.01
+,,2,"<4",0.40,0.30
+,,3,">=4",0.50,0.18
+,,4,"NI",0.01,0.01
+,,,,,
+"v520","v520 - how many times went to BR364 cities",0,"None",0.03,0.50
+,,1,"<4",0.40,0.30
+,,2,">=4",0.56,0.19
+,,3,"NI",0.01,0.01
+,,,,,
+"v521","v521 - which cities went more often",0,"NI",0.01,0.01
+,,1,"Ariquemes",0.35,0.08
+,,2,"Jaru",0.35,0.08
+,,3,"Ouro Preto",0.05,0.50
+,,4,"Other RO",0.08,0.08
+,,5,"Other UF",0.06,0.08
+,,6,"Mixed",0.10,0.01
+,,7,"None",0.00,0.16
+,,,,,
+"v621","v621 - how long live in the house",0,"less than 1 month",0.10,0.40
+,,1,"1 to < 6 months",0.34,0.30
+,,2,"6 to <12 months",0.40,0.20
+,,3,">= 12 months",0.15,0.09
+,,4,"NI",0.01,0.01
+,,,,,
+"v403","v403 - anybody cleared area before the HH",0,"No",0.30,0.69
+,,1,"Yes",0.69,0.30
+,,2,"NI",0.01,0.01
+,,,,,
+"Areas85","areas",1,,0.10,0.60
+,,2,,0.60,0.10
+,,3,,0.30,0.30

@@ -1,0 +1,17 @@
+{
+    "contents" : "dat = read.csv(\"1router_allcount.dat\")\nattach(dat)\n\nx.names = c(\"src fddi\",\"src switch\",\"src local\",\"src corp\",\"dst fddi\",\"dst switch\",\"dst local\",\"dst corp\")\n\npar(mfrow=c(1,2))\nmeans=c()\nvars = c()\nfor(i in 1:8)\n{\n  means[i]=mean(value[which(nme[3301:3600]==x.names[i])+3300])\n  vars[i]=var(value[which(nme[3301:3600]==x.names[i])+3300])\n}\nplot(log10(means),log10(vars),pch=c(\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\"),ylim=range(7,11),main=\"11:30\")\nfit=lm(log10(vars)~log10(means))\nx = seq(4,6,0.1)\ny = fit$coef[1] + fit$coef[2]*x\nlines(x,y)\n\nmeans=c()\nvars = c()\nfor(i in 1:8)\n{\n  means[i]=mean(value[which(nme[4501:4800]==x.names[i])+4500])\n  vars[i]=var(value[which(nme[4501:4800]==x.names[i])+4500])\n}\nplot(log10(means),log10(vars),pch=c(\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\"),ylim=range(7,11),main=\"15:30\")\nfit=lm(log10(vars)~log10(means))\nx = seq(4,6,0.1)\ny = fit$coef[1] + fit$coef[2]*x\nlines(x,y)\n\n\ndat2 = read.csv(\"2router_linkcount.dat\")\nattach(dat2)\n\nx.names = c(\"dst router5\", \"dst r4-local\", \"dst switch\", \"dst r4-others\",\"dst gw1\", \"dst gw2\", \"dst gw3\", \"dst gw-others\", \n              \"ori router5\", \"ori r4-local\", \"ori switch\", \"ori r4-others\",\"ori gw1\", \"ori gw2\", \"ori gw3\", \"ori gw-others\")\n\npar(mfrow=c(1,2))\nmeans=c()\nvars = c()\nfor(i in 1:8)\n{\n  means[i]=mean(value[which(nme[2113:2304]==x.names[i])+2112])\n  vars[i]=var(value[which(nme[2113:2304]==x.names[i])+2112])\n}\nplot(log10(means),log10(vars),pch=c(\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\",\n                                    \"9\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\"),main=\"11:30\")\nfit=lm(log10(vars)~log10(means))\nx = seq(2,6,0.1)\ny = fit$coef[1] + fit$coef[2]*x\nlines(x,y)\n\nmeans=c()\nvars = c()\nfor(i in 1:8)\n{\n  means[i]=mean(value[which(nme[2881:3088]==x.names[i])+2880])\n  vars[i]=var(value[which(nme[2881:3088]==x.names[i])+2800])\n}\nplot(log10(means),log10(vars),pch=c(\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\",\n                                    \"9\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\"),main=\"15:30\")\nfit=lm(log10(vars)~log10(means))\nx = seq(2,6,0.1)\ny = fit$coef[1] + fit$coef[2]*x\nlines(x,y)\n\n\n\n\n\n\n",
+    "created" : 1416019729786.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3515508748",
+    "id" : "E50AEB1C",
+    "lastKnownWriteTime" : 1416538869,
+    "path" : "~/Documents/School/Harvard/Third Semester/STAT 221/Assignments/Ass5/Ass5 R Code/tam_gregory_ps5_1.2.R",
+    "project_path" : "tam_gregory_ps5_1.2.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
